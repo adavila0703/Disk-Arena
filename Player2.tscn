@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Player2.gd" type="Script" id=1]
+[ext_resource path="res://PlayerNinja/NinjaDown2.png" type="Texture" id=2]
+[ext_resource path="res://PlayerNinja/NinjaRight.png" type="Texture" id=3]
+[ext_resource path="res://PlayerNinja/NinjaRight3.png" type="Texture" id=4]
+[ext_resource path="res://PlayerNinja/NinjaRight2.png" type="Texture" id=5]
+[ext_resource path="res://PlayerNinja/NinjaUp3.png" type="Texture" id=6]
+[ext_resource path="res://PlayerNinja/NinjaUp2.png" type="Texture" id=7]
+[ext_resource path="res://PlayerNinja/NinjaUp.png" type="Texture" id=8]
+[ext_resource path="res://PlayerNinja/NinjaDown3.png" type="Texture" id=9]
+[ext_resource path="res://PlayerNinja/NinjaDown.png" type="Texture" id=10]
+[ext_resource path="res://PlayerNinja/NinjaLeft1.png" type="Texture" id=11]
+[ext_resource path="res://PlayerNinja/NinjaLeft2.png" type="Texture" id=12]
+[ext_resource path="res://PlayerNinja/NinjaLeft3.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "RunRight",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "RunUp",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 2 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "RunDown",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "RunLeft",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10.3723 )
+
+[node name="Player2" type="KinematicBody2D" index="0"]
+
+position = Vector2( 1060, 350 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 15
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+speed = 200
+
+[node name="Ninja" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 0.371803, 0.495065 )
+scale = Vector2( 1.27243, 1.32511 )
+frames = SubResource( 1 )
+animation = "Idle"
+playing = true
+
+[node name="Position2D" type="Position2D" parent="." index="1"]
+
+position = Vector2( 0.621671, 0.880149 )
+rotation = 3.14159
+scale = Vector2( 1.17951, 1.43112 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( 0.235771, 0.787063 )
+scale = Vector2( 1.73747, 2.19253 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+

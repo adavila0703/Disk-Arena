@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Player1_Projectile.gd" type="Script" id=1]
+[ext_resource path="res://Projectile/evilProjectile7.png" type="Texture" id=2]
+[ext_resource path="res://Projectile/evilProjectile6.png" type="Texture" id=3]
+[ext_resource path="res://Projectile/evilProjectile5.png" type="Texture" id=4]
+[ext_resource path="res://Projectile/evilProjectile4.png" type="Texture" id=5]
+[ext_resource path="res://Projectile/evilProjectile3.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="Player1_Projectile" type="RigidBody2D" index="0"]
+
+input_pickable = true
+collision_layer = 8
+collision_mask = 30
+mode = 0
+mass = 0.885604
+friction = 1.0
+bounce = 1.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 1
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Pickable" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( -0.20461, -1.34379 )
+scale = Vector2( 0.445788, 0.445788 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 2
+playing = true
+
+[connection signal="body_entered" from="." to="." method="_on_Player1_Projectile_body_entered"]
+
+
